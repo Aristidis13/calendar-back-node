@@ -6,7 +6,8 @@
   "main": "constants.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
@@ -15,21 +16,7 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "ejs": "^3.1.10",
     "prettier": "^3.6.2"
-  },
-  "prettier": {
-    "arrowParens": "avoid",
-    "bracketSpacing": true,
-    "endOfLine": "lf",
-    "bracketSameLine": false,
-    "jsxSingleQuote": false,
-    "printWidth": 100,
-    "proseWrap": "preserve",
-    "quoteProps": "as-needed",
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "all",
-    "useTabs": false
   }
 }
