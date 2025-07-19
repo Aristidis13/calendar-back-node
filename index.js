@@ -1,10 +1,11 @@
 import express from 'express';
 import { dirname } from './utils.js';
 import getShopData from './controllers/getShopData.js';
+import cors from 'cors';
 
 const app = express();
 
-const server = app.listen(3000, () => {
+const server = app.listen(3000, (req, res) => {
   console.log(
     `Server listens at port: ${server.address().port}. Full url: http://localhost:${server.address().port}`,
   );
@@ -12,12 +13,18 @@ const server = app.listen(3000, () => {
 
 app.use(express.static('public'));
 
+app.use(
+  cors({
+    origin: '*',
+  }),
+);
+
 app.get('/', (req, res) => {
   res.sendFile('index.html', { root: dirname + '/pages/' });
 });
 
 app.get('/api/getShopData', (req, res) => {
-  const getShopDataRes = getShopData();
+  const getShopDataRes = getShopData(req);
   res.json(getShopDataRes);
 });
 
