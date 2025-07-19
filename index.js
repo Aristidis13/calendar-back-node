@@ -1,7 +1,7 @@
-import express from 'express';
-import { dirname } from './utils.js';
-import getShopData from './controllers/getShopData.js';
 import cors from 'cors';
+import { dirname } from './utils.js';
+import express from 'express';
+import getShopData from './controllers/getShopData.js';
 
 const app = express();
 
