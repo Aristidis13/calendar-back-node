@@ -1,5 +1,3 @@
-import url from 'url';
-
 /**
  * Controller to handle shop data retrieval.
  * This function will be implemented to fetch and return shop data based on the account ID.
@@ -16,16 +14,14 @@ export default function getShopData(request) {
         id: 0,
         label: 'Παιδικό (ηλικίες κάτω των 14)',
         price: 10,
-        img: '/public/imgs/kids.jpg',
       },
       {
         id: 1,
         label: 'Κούρεμα και Περιποίηση Γενειάδας',
         price: 15,
-        img: '/public/imgs/beard.webp',
       },
-      { id: 2, label: 'Κούρεμα', price: 12, img: '/public/imgs/haircut.png' },
-      { id: 3, label: 'Ξυρισμα', price: 2, img: '/public/imgs/shave.jpg' },
+      { id: 2, label: 'Κούρεμα', price: 12 },
+      { id: 3, label: 'Ξυρισμα', price: 2 },
     ],
     shops: [
       {
