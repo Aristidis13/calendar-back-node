@@ -10,9 +10,9 @@
     "requireConfigFile": false
   },
   // Installed plugins that allow additional rules
-  "plugins": ["import", "react", "react-hooks"],
+  "plugins": ["react", "react-hooks"],
   // Extention of the schema of rules from other sources
-  "extends": ["eslint:recommended", "plugin:import/errors", "plugin:react/recommended"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   // rules that are added manually
   "rules": {
     "no-unexpected-multiline": "error",
@@ -136,17 +136,6 @@
   "settings": {
     "react": {
       "version": "16.0"
-    },
-    // import-resolver-plugin that allows eslint to resolve without errors paths starting without ./
-    "import/resolver": {
-      "alias": [
-        ["assets", "./src/assets"],
-        ["common", "./src/common"],
-        ["components", "./src/components"],
-        ["config", "./src/config"],
-        ["routes", "./src/routes"],
-        ["utils", "./src/utils"]
-      ]
     }
   }
 }
