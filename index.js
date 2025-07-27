@@ -1,6 +1,7 @@
 import cors from 'cors';
 import { dirname } from './utils.js';
 import express from 'express';
+import getImage from './controllers/getImage.js';
 import getShopData from './controllers/getShopData.js';
 
 const app = express();
@@ -21,6 +22,12 @@ app.use(
 
 app.get('/', (req, res) => {
   res.sendFile('index.html', { root: dirname + '/pages/' });
+});
+
+app.get('/api/img', (req, res) => {
+  const image = getImage(req);
+
+  return res.json(image);
 });
 
 app.get('/api/getShopData', (req, res) => {
