@@ -1,7 +1,7 @@
 import cors from 'cors';
 import { dirname } from './utils.js';
 import express from 'express';
-import getDates from './controllers/getDates.js';
+import getDatesForDay from './controllers/getDatesForDay.js';
 import getImage from './controllers/getImage.js';
 import getShopData from './controllers/getShopData.js';
 
@@ -36,8 +36,8 @@ app.get('/api/getShopData', (req, res) => {
   res.json(getShopDataRes);
 });
 
-app.get('/api/dates', (req, res) => {
-  const dates = getDates(req);
+app.get('/api/day', (req, res) => {
+  const dates = getDatesForDay(req);
 
   res.json(dates);
 });

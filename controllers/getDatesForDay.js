@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { reservationsForMonth as reservations } from '../models/getReservations.js'; //mockData
+import { retrieveDatesForDay } from '../models/getReservations.js'; //mockData
 
 const HOUR_FORMAT = 'HH:mm:ss';
 
@@ -42,25 +42,24 @@ function daysInMonth(year, month) {
 }
 
 /**
- * Retrieves all dates for a month
+ * Retrieves all available slots for a day
  * @param {object} req - The request object
  * @returns {object} - The image data
  */
-const getDates = req => {
-  const { year, month } = req.query || {};
+const getDatesForDay = req => {
+  const { selectedDate } = req.query || {};
   const { opening_time, closing_time, duration } = dbData;
-  const monthObj = [];
+
+  // Find all reservations for day
+  const reservations = retrieveDatesForDay(selectedDate);
 
   // Create all possible slots for reservations
   const allPossibleSlotsForDay = createDaySlots(opening_time, closing_time, duration);
-  const daysOfMonth = daysInMonth(year, month);
 
-  for (let day = 1; day <= daysOfMonth; day++) {
-    const availableSlots = createAvailableSlots(allPossibleSlotsForDay, reservations);
-    monthObj.push(availableSlots);
-  }
+  // Excludes reservations and returns the rest
+  const availableSlots = createAvailableSlots(allPossibleSlotsForDay, reservations);
 
-  return monthObj;
+  return availableSlots;
 };
 
-export default getDates;
+export default getDatesForDay;

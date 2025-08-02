@@ -24,4 +24,12 @@ const reservationsForMonth = [
   },
 ];
 
-export { reservationsForMonth };
+/**
+ * Retrieves reservations for a specific day
+ * @param {string} selectedDay - The selected day to retrieve its reservations
+ */
+const retrieveDatesForDay = selectedDay => {
+  return reservationsForMonth.filter(res => selectedDay === res.reservation_date);
+};
+
+export { retrieveDatesForDay };
