@@ -1,6 +1,7 @@
 import cors from 'cors';
 import { dirname } from './utils.js';
 import express from 'express';
+import getDates from './controllers/getDates.js';
 import getImage from './controllers/getImage.js';
 import getShopData from './controllers/getShopData.js';
 
@@ -35,8 +36,10 @@ app.get('/api/getShopData', (req, res) => {
   res.json(getShopDataRes);
 });
 
-app.get('/about', (req, res) => {
-  res.send({ name: 'Aimilia', lastName: 'Spiliotopoulou' });
+app.get('/api/dates', (req, res) => {
+  const dates = getDates(req);
+
+  res.json(dates);
 });
 
 app.use((req, res) => {
