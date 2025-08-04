@@ -33,7 +33,7 @@ const getMonthAvailability = req => {
   for (let i = 1; i <= numOfDays; i++) {
     days.push({
       date: dayjs(`${year}-${month}-${i.toPrecision(2)}`).format(DATE_FORMAT),
-      is_full: Math.random() > 0.5 || i === 10 || i === 17 || i === 24 || i === 31,
+      is_full: Math.random() > 0.5 || i === 10 || i === 17 || i === 24 || i === 31, //Mock
     });
   }
 
