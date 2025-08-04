@@ -40,12 +40,6 @@ const createAvailableSlots = (allPossibleSlotsForDay, allReservations) => {
   );
 };
 
-function daysInMonth(year, month) {
-  // month is 0-indexed (0 = January, 11 = December)
-  // new Date(year, month+1, 0) → last day of the given month
-  return new Date(year, month, 0).getDate();
-}
-
 /**
  * Retrieves all available slots for a day
  * @param {object} req - The request object

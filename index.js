@@ -1,4 +1,9 @@
-import { getDatesForDay, getImage, getShopData } from './controllers/index.js';
+import {
+  getDatesForDay,
+  getImage,
+  getMonthAvailability,
+  getShopData,
+} from './controllers/index.js';
 
 import cors from 'cors';
 import { dirname } from './utils.js';
