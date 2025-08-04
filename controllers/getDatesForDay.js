@@ -52,11 +52,11 @@ function daysInMonth(year, month) {
  * @returns {object} - The image data
  */
 const getDatesForDay = req => {
-  const { selectedDate } = req.query || {};
+  const { selectedDate, barberId, shopId } = req.query || {};
   const { opening_time, closing_time, duration } = shopWorkingData;
 
   // Find all reservations for day
-  const reservations = retrieveDatesForDay(selectedDate);
+  const reservations = retrieveDatesForDay(selectedDate, parseInt(barberId), parseInt(shopId));
 
   // Create all possible slots for reservations
   const allPossibleSlotsForDay = createDaySlots(opening_time, closing_time, duration, selectedDate);
@@ -64,7 +64,7 @@ const getDatesForDay = req => {
   // Excludes reservations and returns the rest
   const availableSlots = createAvailableSlots(allPossibleSlotsForDay, reservations);
 
-  return availableSlots;
+  return { availableSlots };
 };
 
 export default getDatesForDay;

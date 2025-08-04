@@ -1,9 +1,8 @@
+import { getDatesForDay, getImage, getShopData } from './controllers/index.js';
+
 import cors from 'cors';
 import { dirname } from './utils.js';
 import express from 'express';
-import getDatesForDay from './controllers/getDatesForDay.js';
-import getImage from './controllers/getImage.js';
-import getShopData from './controllers/getShopData.js';
 
 const app = express();
 
@@ -34,6 +33,12 @@ app.get('/api/img', (req, res) => {
 app.get('/api/getShopData', (req, res) => {
   const getShopDataRes = getShopData(req);
   res.json(getShopDataRes);
+});
+
+app.get('/api/month', (req, res) => {
+  const dates = getMonthAvailability(req);
+
+  res.json(dates);
 });
 
 app.get('/api/day', (req, res) => {
