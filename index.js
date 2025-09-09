@@ -25,10 +25,6 @@ app.use(
   }),
 );
 
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: dirname + '/pages/' });
-});
-
 app.get('/api/img', (req, res) => {
   const image = getImage(req);
 
