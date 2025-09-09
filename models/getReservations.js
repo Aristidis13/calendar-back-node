@@ -6,57 +6,57 @@ import { convertTimeToUIFormat } from '../utils.js';
 const reservationsForMonth = [
   {
     id: 1,
-    date: '2025-08-12',
-    time: '10:00:00',
+    reservation_date: '2025-08-12',
+    reservation_time: '10:00:00',
     shop_id: 1,
     barber_id: 1,
   },
   {
     id: 2,
-    date: '2025-08-27',
-    time: '10:30:00',
+    reservation_date: '2025-08-27',
+    reservation_time: '10:30:00',
     shop_id: 1,
     barber_id: 1,
   },
   {
     id: 3,
-    date: '2025-08-06',
-    time: '11:00:00',
+    reservation_date: '2025-08-06',
+    reservation_time: '11:00:00',
     shop_id: 1,
     barber_id: 1,
   },
   {
     id: 4,
-    date: '2025-08-04',
-    time: '11:30:00',
+    reservation_date: '2025-08-04',
+    reservation_time: '11:30:00',
     shop_id: 1,
     barber_id: 1,
   },
   {
     id: 5,
-    date: '2025-08-12',
-    time: '10:00:00',
+    reservation_date: '2025-08-12',
+    reservation_time: '10:00:00',
     shop_id: 1,
     barber_id: 1,
   },
   {
     id: 6,
-    date: '2025-08-05',
-    time: '10:30:00',
+    reservation_date: '2025-08-05',
+    reservation_time: '10:30:00',
     shop_id: 1,
     barber_id: 1,
   },
   {
     id: 7,
-    date: '2025-08-05',
-    time: '11:00:00',
+    reservation_date: '2025-08-05',
+    reservation_time: '11:00:00',
     shop_id: 1,
     barber_id: 1,
   },
   {
     id: 8,
-    date: '2025-08-05',
-    time: '11:30:00',
+    reservation_date: '2025-08-05',
+    reservation_time: '11:30:00',
     shop_id: 1,
     barber_id: 1,
   },
@@ -71,7 +71,7 @@ const reservationsForMonth = [
  */
 const retrieveDatesForDay = (selectedDay, barberId, shopId) =>
   reservationsForMonth
-    .filter(res => selectedDay === res.date && res.barber_id === barberId && res.shop_id === shopId)
-    .map(res => convertTimeToUIFormat(res.time));
+    .filter(res => selectedDay === res.reservation_date && res.barber_id === barberId && res.shop_id === shopId)
+    .map(res => convertTimeToUIFormat(res.reservation_time));
 
 export { retrieveDatesForDay };
