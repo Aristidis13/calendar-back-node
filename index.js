@@ -3,6 +3,7 @@ import {
   getImage,
   getMonthAvailability,
   getShopData,
+  postReservation,
 } from './controllers/index.js';
 
 import cors from 'cors';

@@ -1,4 +1,4 @@
-import postReservationModel from '../models/postReservation';
+import postReservationModel from '../models/postReservation.js';
 
 /**
  * Controller for posting reservation to the database
@@ -7,6 +7,8 @@ import postReservationModel from '../models/postReservation';
  */
 function postReservation(req) {
   const dbResponse = postReservationModel(req);
+
+  return dbResponse;
 }
 
 export default postReservation;
