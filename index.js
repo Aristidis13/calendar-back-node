@@ -48,6 +48,11 @@ app.get('/api/day', (req, res) => {
   res.json(dates);
 });
 
+app.post('/api/save', (req, res) => {
+  const dbResponse = postReservation(req);
+  res.send(dbResponse);
+});
+
 app.use((req, res) => {
   res.status(400).send('Cannot find page');
 });
