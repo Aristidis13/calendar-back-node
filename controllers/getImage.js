@@ -2,8 +2,8 @@
  * Data that will exist in the Database
  */
 const mockDatabaseData = [
-  { imgId: 1, url: '/imgs/lobby1.jpg' },
-  { imgId: 2, url: '/imgs/lobby2.jpg' },
+  { imgId: 1, url: '/imgs/shop1.jpg' },
+  { imgId: 2, url: '/imgs/shop2.webp' },
   { imgId: 3, url: '/imgs/shop3.jpg' },
   { imgId: 4, url: '/imgs/john.jpg' },
   { imgId: 5, url: '/imgs/nick.jpg' },
