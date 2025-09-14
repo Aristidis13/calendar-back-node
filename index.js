@@ -25,7 +25,10 @@ app.use(express.json());
 // Accepts data from everywhere - TODO Refactor it to accept only from specific places
 app.use(
   cors({
-    origin: '*',
+    origin: [
+      'http://localhost:5173', //<- The url of the frontend in the localhost app
+      'some-other-environment', //<- TODO - Change it to the url that the frontend is hosted when you host the FE app
+    ], // allowed origins
   }),
 );
 
