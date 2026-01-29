@@ -4,10 +4,9 @@ import {
   getMonthAvailability,
   getShopData,
   postReservation,
-} from './controllers/index.js';
+} from './src/controllers/index.js';
 
 import cors from 'cors';
-import { dirname } from './utils.js';
 import express from 'express';
 
 const app = express();
@@ -71,4 +70,3 @@ app.post('/api/save', (req, res) => {
 app.use((req, res) => {
   res.status(400).send('Endpoint is not available');
 });
-

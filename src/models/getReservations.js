@@ -71,7 +71,12 @@ const reservationsForMonth = [
  */
 const retrieveDatesForDay = (selectedDay, barberId, shopId) =>
   reservationsForMonth
-    .filter(res => selectedDay === res.reservation_date && res.barber_id === barberId && res.shop_id === shopId)
+    .filter(
+      res =>
+        selectedDay === res.reservation_date &&
+        res.barber_id === barberId &&
+        res.shop_id === shopId,
+    )
     .map(res => convertTimeToUIFormat(res.reservation_time));
 
 export { retrieveDatesForDay };
