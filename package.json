@@ -14,10 +14,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sequelize/mysql": "^7.0.0-alpha.47",
     "cors": "^2.8.5",
     "dayjs": "^1.11.13",
     "express": "^5.1.0",
-    "react-hooks": "^1.0.1"
+    "react-hooks": "^1.0.1",
+    "sequelize": "^6.37.7"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
