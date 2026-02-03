@@ -40,12 +40,9 @@ CREATE TABLE IF NOT EXISTS business (
 -- 5️⃣ Create service table (depends on image)
 CREATE TABLE IF NOT EXISTS service (
     id SMALLINT PRIMARY KEY AUTO_INCREMENT,
-    label VARCHAR(15) NOT NULL,
+    label VARCHAR(100) NOT NULL,
     price DECIMAL(4,2) NOT NULL,
     lasts TIME NOT NULL,
-    img BIGINT,
-    CONSTRAINT fk_service_img FOREIGN KEY (img) REFERENCES image(id)
-        ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- 6️⃣ Create shop table (depends on business, address, image)
@@ -92,7 +89,7 @@ CREATE TABLE IF NOT EXISTS business_have_service (
 CREATE TABLE IF NOT EXISTS phone (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     shop_id BIGINT NOT NULL,
-    value CHAR(10) NOT NULL,
+    `value` VARCHAR(15) NOT NULL,
     CONSTRAINT fk_phone_shop FOREIGN KEY (shop_id) REFERENCES shop(id)
         ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -143,3 +140,58 @@ CREATE INDEX idx_reservation_customer_id ON reservation(customer_id);
 CREATE INDEX idx_reservation_barber_id ON reservation(barber_id);
 CREATE INDEX idx_reservation_shop_id ON reservation(shop_id);
 CREATE INDEX idx_reservation_date_time ON reservation(reservation_date, reservation_time);
+
+-- DATA INSERTION
+
+-- Insert businesses
+INSERT INTO image (path, name) VALUES
+('/imgs/bl1.jpg', 'Silver Scissors logo');
+INSERT INTO business (name, added, logo) VALUES
+('Silver Scissors', '2026-02-01 10:15:00', 1);
+
+-- Insert addresses
+INSERT INTO address (street, street_number, city, suburb, postal_code) VALUES
+("Patron Klaous","36","Patras","26335","26335"),
+("Agiou Georgiou","49","Patras","26432","26432"),
+("Kolokotroni","18", "Patra","26290","26290");
+
+-- Insert services
+INSERT INTO service (label, price, lasts) VALUES
+("Children\'s haircut (under 14)", 10, 30),
+('Haircut and beard grooming', 15, 30),
+('Haircut', 12, 30),
+('Shave', 2, 15);
+
+-- Insert shops
+INSERT INTO image (path, name) VALUES
+('/imgs/shop1.jpg', 'Shop 1'),
+('/imgs/shop2.webp', 'Shop 2'),
+('/imgs/shop3.jpg', 'Shop 3');
+
+INSERT INTO shop (business_id, name, img, opening_time, closing_time, address_id) VALUES
+(1,'Lobby 1', 1, '09:00:00', '20:00:00', 1),
+(1,'Gobbi desert', 2, '09:00:00', '20:00:00', 2),
+(1,'', 3, '09:00:00', '20:00:00', 3);
+
+-- Insert shop phone numbers
+INSERT INTO phone (shop_id, `value`) VALUES
+(7, '26105555555'),
+(8, '2610645876');
+
+-- Insert barbers
+INSERT INTO image (path, name) VALUES
+('/imgs/john.jpg', 'John barber image'),
+('/imgs/nick.jpg', 'Nick barber image'),
+('/imgs/ilias.jpg', 'Ilias barber image');
+
+INSERT INTO barber (name, img, shop_id) VALUES
+('John', 8, 7),
+('Nick', 9, 8),
+('Ilias', 10, 7);
+
+-- insert business_have_service relations
+INSERT INTO business_have_service (business_id, service_id) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4);
