@@ -39,9 +39,14 @@ app.get('/api/img', (req, res) => {
 });
 
 //Fetches shop data for the shop
-app.get('/api/getShopData', (req, res) => {
-  const getShopDataRes = getShopData(req);
-  res.json(getShopDataRes);
+app.get('/api/getShopData', async (req, res) => {
+  try {
+    const getShopDataRes = await getShopData(req);
+    res.json(getShopDataRes);
+  } catch (err) {
+    console.error('Error fetching shop data', err);
+    res.status(500).json({ error: 'Failed to fetch shop data' });
+  }
 });
 
 // For a specific month it fetches available data
