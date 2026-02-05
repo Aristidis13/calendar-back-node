@@ -1,34 +1,34 @@
-/**
- * Data that will exist in the Database
- */
-const mockDatabaseData = [
-  { imgId: 1, url: '/imgs/shop1.jpg' },
-  { imgId: 2, url: '/imgs/shop2.webp' },
-  { imgId: 3, url: '/imgs/shop3.jpg' },
-  { imgId: 4, url: '/imgs/john.jpg' },
-  { imgId: 5, url: '/imgs/nick.jpg' },
-  { imgId: 6, url: '/imgs/ilias.jpg' },
-];
+import models from '../models/index.js';
 
 /**
- * Retrieves an image from the server and serves it to the client
+ * Retrieves an image from the database and serves it to the client
  * @param {object} req - The request object
- * @returns {object} - The image data
+ * @returns {object} - The image data with full URL
  */
-const getImage = req => {
+const getImage = async req => {
   const host = req.headers.host;
   const protocol = req.protocol;
   const fullUrl = `${protocol}://${host}`;
   const { imgId } = req.query || {};
 
-  /**
-   * The action below will pass to SQL DB as SP
-   */
-  const { url, ...imgData } = mockDatabaseData.find(
-    imageInDataBase => imageInDataBase?.imgId === parseFloat(imgId),
-  );
+  if (!imgId) {
+    throw new Error('imgId query parameter is required');
+  }
 
-  return { url: fullUrl + url, ...imgData };
+  const parsedId = parseInt(imgId, 10);
+  if (isNaN(parsedId)) {
+    throw new Error(`imgId must be a valid number, got: ${imgId}`);
+  }
+
+  const image = await models.Image.findByPk(parsedId, {
+    attributes: ['id', 'path', 'name'],
+  });
+
+  if (!image) {
+    throw new Error(`Image with id ${parsedId} not found`);
+  }
+
+  return { id: image.id, url: fullUrl + image.path, name: image.name };
 };
 
 export default getImage;
