@@ -32,10 +32,14 @@ app.use(
 );
 
 // Fetches images
-app.get('/api/img', (req, res) => {
-  const image = getImage(req);
-
-  return res.json(image);
+app.get('/api/img', async (req, res) => {
+  try {
+    const image = await getImage(req);
+    return res.json(image);
+  } catch (err) {
+    console.error('Error fetching image', err);
+    res.status(500).json({ error: 'Failed to fetch image' });
+  }
 });
 
 //Fetches shop data for the shop

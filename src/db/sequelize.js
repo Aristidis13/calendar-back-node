@@ -6,10 +6,10 @@ import { Sequelize } from '@sequelize/core';
  */
 const sequelize = new Sequelize({
   dialect: MySqlDialect,
-  database: 'mydb',
+  database: 'reservation',
   user: 'root',
-  password: 'mypass',
-  host: 'localhost',
+  password: 'root',
+  host: 'host.docker.internal',
   port: 3306,
   showWarnings: true,
 });
